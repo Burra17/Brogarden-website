@@ -182,3 +182,59 @@ footer {
   font-size: 1.1rem;
 }
 
+/* Aktiv länk i navigationen */
+.nav-links a.active {
+    border-bottom: 2px solid #f67280;
+}
+
+/* Mobilmeny-knapp */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+/* Kontaktlista */
+.contact-list {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 2rem;
+}
+
+    .contact-list li {
+        margin-bottom: 0.5rem;
+        font-size: 1.1rem;
+    }
+
+/* Responsiv design */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        background: #2a4d69;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 200px;
+        padding: 1rem;
+    }
+
+        .nav-links.show {
+            display: flex;
+        }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+}
