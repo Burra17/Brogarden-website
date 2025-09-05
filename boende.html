@@ -69,10 +69,18 @@
     </footer>
 
     <!-- Mobilmeny-script -->
-    <script>const menuToggle = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
-    menuToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('show');
-    });</script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+
+            if (menuToggle && navLinks) {
+                menuToggle.addEventListener('click', () => {
+                    navLinks.classList.toggle('show');
+                });
+            }
+        });
+    </script>
+
 </body>
 </html>
