@@ -1,1 +1,73 @@
+﻿<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program – Vandrarhemmet Brogården</title>
+    <meta name="description" content="Kommande aktiviteter på Brogården: sångläger, gudstjänster och mycket mer.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">Vandrarhemmet</a>
+            <button class="menu-toggle" aria-label="Öppna meny">☰</button>
+            <ul class="nav-links">
+                <li><a href="index.html">Hem</a></li>
+                <li><a href="boende.html">Boende</a></li>
+                <li><a href="kontakt.html">Kontakt</a></li>
+                <li><a href="program.html" class="active">Program</a></li>
+            </ul>
+        </nav>
+    </header>
 
+    <!-- Hero sektion -->
+    <section class="hero small-hero">
+        <div class="hero-text">
+            <h1>Program & Aktiviteter</h1>
+            <p>Här hittar du kommande aktiviteter på Brogården.</p>
+        </div>
+    </section>
+
+    <!-- Aktivitetslista -->
+    <section class="activity-list">
+        <div class="container">
+
+            <article class="activity-card">
+                <h2>Sångläger</h2>
+                <p><strong>Datum:</strong> 12-15 juni 2025</p>
+                <p>Välkommen till vårt populära sångläger för både unga och gamla! Vi sjunger, umgås och har roligt tillsammans.</p>
+            </article>
+
+            <article class="activity-card">
+                <h2>Gudstjänst</h2>
+                <p><strong>Datum:</strong> 22 juni 2025</p>
+                <p>Gemensam gudstjänst i vår samlingssal. Alla är välkomna!</p>
+            </article>
+
+            <!-- Fyll på med fler aktiviteter efter behov -->
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Vandrarhemmet – Alla rättigheter förbehållna</p>
+    </footer>
+
+    <!-- Mobilmeny-script -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+
+            if (menuToggle && navLinks) {
+                menuToggle.addEventListener('click', () => {
+                    navLinks.classList.toggle('show');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
