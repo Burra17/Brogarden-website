@@ -243,3 +243,27 @@ footer {
         font-size: 1rem;
     }
 }
+.activity-list .container {
+    max-width: 700px;
+    margin: auto;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.activity-card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    padding: 1.5rem;
+}
+
+    .activity-card h2 {
+        margin-bottom: 0.5rem;
+        color: #2a4d69;
+    }
+
+    .activity-card p {
+        margin-bottom: 0.5rem;
+    }
