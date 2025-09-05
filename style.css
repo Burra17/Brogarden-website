@@ -167,4 +167,18 @@ footer {
   font-weight: bold;
   color: #2a4d69;
 }
+/* Kontakt */
+.contact {
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.contact h2 {
+  margin-bottom: 1rem;
+}
+
+.contact p {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
 
