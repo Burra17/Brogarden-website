@@ -1,47 +1,57 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kontakt – Vandrarhemmet</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontakt – Vandrarhemmet</title>
+    <meta name="description" content="Kontakta Vandrarhemmet för bokningar och frågor. Telefon, e-post och adress hittar du här.">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Navigation -->
-  <header>
-    <nav class="navbar">
-      <div class="logo">Vandrarhemmet</div>
-      <ul class="nav-links">
-        <li><a href="index.html">Hem</a></li>
-        <li><a href="boende.html">Boende</a></li>
-        <li><a href="kontakt.html" class="active">Kontakt</a></li>
-      </ul>
-    </nav>
-  </header>
+    <!-- Navigation -->
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">Vandrarhemmet</a>
+            <button class="menu-toggle" aria-label="Öppna meny">☰</button>
+            <ul class="nav-links">
+                <li><a href="index.html">Hem</a></li>
+                <li><a href="boende.html">Boende</a></li>
+                <li><a href="kontakt.html" class="active">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <!-- Hero sektion -->
-  <section class="hero small-hero">
-    <div class="hero-text">
-      <h1>Kontakta oss</h1>
-      <p>Har du frågor eller vill boka? Hör gärna av dig!</p>
-    </div>
-  </section>
+    <!-- Hero sektion -->
+    <section class="hero small-hero">
+        <div class="hero-text">
+            <h1>Kontakta oss</h1>
+            <p>Har du frågor eller vill boka? Hör gärna av dig!</p>
+        </div>
+    </section>
 
-  <!-- Kontaktinfo -->
-  <section class="contact">
-    <div class="container">
-      <h2>Kontaktuppgifter</h2>
-      <p><strong>Telefon:</strong> 070-123 45 67</p>
-      <p><strong>E-post:</strong> <a href="mailto:info@vandrarhem.se">info@vandrarhem.se</a></p>
-      <p><strong>Adress:</strong> Exempelvägen 12, 123 45 Någonstad</p>
+    <!-- Kontaktinfo -->
+    <section class="contact">
+        <div class="container">
+            <h2>Kontaktuppgifter</h2>
+            <ul class="contact-list">
+                <li><strong>Telefon:</strong> <a href="tel:+46701234567">070-123 45 67</a></li>
+                <li><strong>E-post:</strong> <a href="mailto:info@vandrarhem.se">info@vandrarhem.se</a></li>
+                <li><strong>Adress:</strong> Exempelvägen 12, 123 45 Någonstad</li>
+            </ul>
+            <a href="mailto:info@vandrarhem.se?subject=Bokningsförfrågan" class="btn">Skicka bokningsförfrågan</a>
+        </div>
+    </section>
 
-      <a href="mailto:info@vandrarhem.se?subject=Bokningsförfrågan" class="btn">Skicka bokningsförfrågan</a>
-    </div>
-  </section>
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Vandrarhemmet – Alla rättigheter förbehållna</p>
+    </footer>
 
-  <!-- Footer -->
-  <footer>
-    <p>© 2025 Vandrarhemmet – Alla rättigheter förbehållna</p>
-  </footer>
+    <!-- Mobilmeny-script -->
+    <script>const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });</script>
 </body>
 </html>
