@@ -1,69 +1,78 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Boende – Vandrarhemmet</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boende – Vandrarhemmet</title>
+    <meta name="description" content="Upptäck våra enkelrum, dubbelrum och stugor vid sjön. Prisvärt och hemtrevligt boende nära naturen.">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Navigation -->
-  <header>
-    <nav class="navbar">
-      <div class="logo">Vandrarhemmet</div>
-      <ul class="nav-links">
-        <li><a href="index.html">Hem</a></li>
-        <li><a href="boende.html" class="active">Boende</a></li>
-        <li><a href="kontakt.html">Kontakt</a></li>
-      </ul>
-    </nav>
-  </header>
+    <!-- Navigation -->
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">Vandrarhemmet</a>
+            <button class="menu-toggle" aria-label="Öppna meny">☰</button>
+            <ul class="nav-links">
+                <li><a href="index.html">Hem</a></li>
+                <li><a href="boende.html" class="active">Boende</a></li>
+                <li><a href="kontakt.html">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <!-- Hero sektion -->
-  <section class="hero small-hero">
-    <div class="hero-text">
-      <h1>Våra rum & stugor</h1>
-      <p>Vi erbjuder olika typer av boende för både enskilda gäster och grupper.</p>
-    </div>
-  </section>
-
-  <!-- Lista med boenden -->
-  <section class="rooms">
-    <div class="container">
-
-      <div class="room-card">
-        <img src="images/rum1.jpg" alt="Enkelrum">
-        <div class="room-info">
-          <h2>Enkelrum</h2>
-          <p>Ett mysigt rum för en person, perfekt för den som vill ha lugn och ro.</p>
-          <p class="price">Pris från 400 kr/natt</p>
+    <!-- Hero sektion -->
+    <section class="hero small-hero">
+        <div class="hero-text">
+            <h1>Våra rum & stugor</h1>
+            <p>Vi erbjuder olika typer av boende för både enskilda gäster och grupper.</p>
         </div>
-      </div>
+    </section>
 
-      <div class="room-card">
-        <img src="images/rum2.jpg" alt="Dubbelrum">
-        <div class="room-info">
-          <h2>Dubbelrum</h2>
-          <p>Ett rymligt rum med två sängar, perfekt för par eller vänner.</p>
-          <p class="price">Pris från 600 kr/natt</p>
+    <!-- Lista med boenden -->
+    <section class="rooms">
+        <div class="container">
+
+            <article class="room-card">
+                <img src="images/rum1.jpg" alt="Enkelrum med säng och skrivbord">
+                <div class="room-info">
+                    <h2>Enkelrum</h2>
+                    <p>Ett mysigt rum för en person, perfekt för den som vill ha lugn och ro.</p>
+                    <p class="price">Pris från 400 kr/natt</p>
+                </div>
+            </article>
+
+            <article class="room-card">
+                <img src="images/rum2.jpg" alt="Dubbelrum med två sängar">
+                <div class="room-info">
+                    <h2>Dubbelrum</h2>
+                    <p>Ett rymligt rum med två sängar, perfekt för par eller vänner.</p>
+                    <p class="price">Pris från 600 kr/natt</p>
+                </div>
+            </article>
+
+            <article class="room-card">
+                <img src="images/stuga.jpg" alt="Stuga vid sjön med veranda">
+                <div class="room-info">
+                    <h2>Stuga vid sjön</h2>
+                    <p>En charmig liten stuga med plats för hela familjen, nära naturen.</p>
+                    <p class="price">Pris från 1200 kr/natt</p>
+                </div>
+            </article>
+
         </div>
-      </div>
+    </section>
 
-      <div class="room-card">
-        <img src="images/stuga.jpg" alt="Stuga vid sjön">
-        <div class="room-info">
-          <h2>Stuga vid sjön</h2>
-          <p>En charmig liten stuga med plats för hela familjen, nära naturen.</p>
-          <p class="price">Pris från 1200 kr/natt</p>
-        </div>
-      </div>
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Vandrarhemmet – Alla rättigheter förbehållna</p>
+    </footer>
 
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <p>© 2025 Vandrarhemmet – Alla rättigheter förbehållna</p>
-  </footer>
+    <!-- Mobilmeny-script -->
+    <script>const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });</script>
 </body>
 </html>
