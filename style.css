@@ -122,6 +122,7 @@ footer {
     padding: 1rem;
     margin-top: 2rem;
 }
+
 /* Mindre hero för undersidor */
 .small-hero {
     height: 40vh;
@@ -158,6 +159,23 @@ footer {
         object-fit: cover;
     }
 
+/* === Nytt för flera bilder i samma rum (Lillstugan) === */
+.room-images {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    padding: 0.5rem;
+    justify-content: center; /* centrerar bilderna */
+    flex-wrap: wrap; /* gör att de bryts snyggt på små skärmar */
+}
+
+    .room-images img {
+        width: 100%;
+        max-width: 200px;
+        border-radius: 8px;
+        object-fit: cover;
+    }
+
 .room-info {
     padding: 1rem;
 }
@@ -171,6 +189,7 @@ footer {
     font-weight: bold;
     color: #2a4d69;
 }
+
 /* Kontakt */
 .contact {
     padding: 3rem 2rem;
@@ -243,6 +262,8 @@ footer {
         font-size: 1rem;
     }
 }
+
+/* Programkort */
 .activity-list .container {
     max-width: 700px;
     margin: auto;
