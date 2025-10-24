@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Boende – Brogården</title>
-    <meta name="description" content="Upptäck våra rum, stugor och samlingssalar på Brogården. Prisvärt och hemtrevligt boende nära naturen.">
+    <meta name="description" content="Upptäck våra rum, stugor och utomhusmiljö på Brogården. Prisvärt och hemtrevligt boende nära naturen.">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -23,11 +23,35 @@
         </nav>
     </header>
 
-    <!-- Hero sektion -->
+    <!-- Hero -->
     <section class="hero small-hero">
         <div class="hero-text">
-            <h1>Våra rum & stugor</h1>
-            <p>Vi erbjuder prisvärt och hemtrevligt boende för både enskilda gäster och grupper.</p>
+            <h1>Bo på Brogården</h1>
+            <p>Upplev lugnet, naturen och den gemenskap som Brogården erbjuder året runt.</p>
+        </div>
+    </section>
+
+    <!-- 🌿 Utomhusmiljö -->
+    <section class="rooms">
+        <div class="container">
+            <h2 class="section-title">Utomhusmiljö</h2>
+            <div class="section-divider"></div>
+
+            <article class="room-card">
+                <div class="room-images">
+                    <img src="images/ute6.jpg" alt="Brogården huvudbyggnad under blå himmel">
+                    <img src="images/ute7.jpg" alt="Brogårdens röda stugor i soligt väder">
+                    <img src="images/ute8.jpg" alt="Person vid bäck i naturen nära Brogården">
+                    <img src="images/ute9.jpg" alt="Lekplats och stuga utomhus vid Brogården">
+                    <img src="images/ute10.jpg" alt="Bro och grönska vid Brogårdens trädgård">
+                    <img src="images/ute11.jpg" alt="Brogården sedd från trädgården">
+                    <img src="images/ute12.jpg" alt="Brogårdens lekplats" />
+                </div>
+                <div class="room-info">
+                    <h3>Natur & Utemiljö</h3>
+                    <p>Gröna ytor, närhet till vattnet och flera sittplatser runt området. Perfekt för avkoppling, grillning eller lek för barnen.</p>
+                </div>
+            </article>
         </div>
     </section>
 
@@ -37,7 +61,6 @@
             <h2 class="section-title">Rum</h2>
             <div class="section-divider"></div>
 
-            <!-- Blårummet & Solorummet -->
             <article class="room-card">
                 <div class="room-images">
                     <img src="images/blårummet1.jpg" alt="Blårummet med 2 bäddar">
@@ -58,7 +81,6 @@
             <h2 class="section-title">Stugor</h2>
             <div class="section-divider"></div>
 
-            <!-- Nystugan -->
             <article class="room-card">
                 <div class="room-images">
                     <img src="images/nystugan1.jpg" alt="Nystugan med veranda">
@@ -73,7 +95,6 @@
                 </div>
             </article>
 
-            <!-- Lillstugan -->
             <article class="room-card">
                 <div class="room-images">
                     <img src="images/lillstugan1.jpg" alt="Lillstugan med veranda">
@@ -87,7 +108,6 @@
                 </div>
             </article>
 
-            <!-- Österstugan -->
             <article class="room-card">
                 <div class="room-images">
                     <img src="images/osterstugan1.jpg" alt="Sovrum i Österstugan med flera bäddar">
@@ -103,7 +123,6 @@
                 </div>
             </article>
 
-            <!-- Kyrksalen -->
             <article class="room-card">
                 <div class="room-images">
                     <img src="images/kyrksal1.jpg" alt="Kyrksal exteriör">
@@ -123,10 +142,9 @@
         <p>© 2025 Brogården – Alla rättigheter förbehållna</p>
     </footer>
 
-    <!-- === Mobilmeny + Lightbox med swipe === -->
+    <!-- Script: Mobilmeny + Lightbox med swipe -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            // === Mobilmeny ===
             const menuToggle = document.querySelector('.menu-toggle');
             const navLinks = document.querySelector('.nav-links');
             if (menuToggle && navLinks) {
@@ -135,7 +153,6 @@
                 });
             }
 
-            // === Lightbox ===
             const lightbox = document.createElement('div');
             lightbox.classList.add('lightbox');
             lightbox.innerHTML = `
@@ -146,72 +163,55 @@
             `;
             document.body.appendChild(lightbox);
 
-            const lightboxImg = lightbox.querySelector('img');
-            const closeBtn = lightbox.querySelector('.lightbox-close');
-            const prevBtn = lightbox.querySelector('.lightbox-prev');
-            const nextBtn = lightbox.querySelector('.lightbox-next');
+            const imgEl = lightbox.querySelector('img');
+            const close = lightbox.querySelector('.lightbox-close');
+            const prev = lightbox.querySelector('.lightbox-prev');
+            const next = lightbox.querySelector('.lightbox-next');
 
-            let currentGroup = [];
-            let currentIndex = 0;
+            let group = [];
+            let index = 0;
 
-            const showImage = (index) => {
-                if (!currentGroup.length) return;
-                lightboxImg.src = currentGroup[index].src;
-                currentIndex = index;
+            const show = (i) => {
+                if (!group.length) return;
+                imgEl.src = group[i].src;
+                index = i;
                 lightbox.classList.add('show');
             };
 
-            // Klickbara bilder
-            document.querySelectorAll('.room-card').forEach(group => {
-                const groupImages = Array.from(group.querySelectorAll('img'));
-                groupImages.forEach((img, i) => {
+            document.querySelectorAll('.room-card').forEach(card => {
+                const imgs = Array.from(card.querySelectorAll('img'));
+                imgs.forEach((img, i) => {
                     img.style.cursor = "pointer";
                     img.addEventListener('click', () => {
-                        currentGroup = groupImages;
-                        showImage(i);
+                        group = imgs;
+                        show(i);
                     });
                 });
             });
 
-            const showNext = () => showImage((currentIndex + 1) % currentGroup.length);
-            const showPrev = () => showImage((currentIndex - 1 + currentGroup.length) % currentGroup.length);
+            const nextImg = () => show((index + 1) % group.length);
+            const prevImg = () => show((index - 1 + group.length) % group.length);
+            next.addEventListener('click', nextImg);
+            prev.addEventListener('click', prevImg);
+            close.addEventListener('click', () => lightbox.classList.remove('show'));
 
-            nextBtn.addEventListener('click', showNext);
-            prevBtn.addEventListener('click', showPrev);
-
-            const closeLightbox = () => {
-                lightbox.classList.remove('show');
-                currentGroup = [];
-            };
-
-            closeBtn.addEventListener('click', closeLightbox);
-            lightbox.addEventListener('click', (e) => {
-                if (e.target === lightbox) closeLightbox();
+            lightbox.addEventListener('click', e => {
+                if (e.target === lightbox) lightbox.classList.remove('show');
             });
 
-            // Tangentbord
-            document.addEventListener('keydown', (e) => {
+            document.addEventListener('keydown', e => {
                 if (!lightbox.classList.contains('show')) return;
-                if (e.key === 'ArrowRight') showNext();
-                if (e.key === 'ArrowLeft') showPrev();
-                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowRight') nextImg();
+                if (e.key === 'ArrowLeft') prevImg();
+                if (e.key === 'Escape') lightbox.classList.remove('show');
             });
 
-            // === Swipe-stöd ===
-            let touchStartX = 0;
-            let touchEndX = 0;
-
-            lightbox.addEventListener('touchstart', (e) => {
-                touchStartX = e.changedTouches[0].screenX;
-            });
-
-            lightbox.addEventListener('touchend', (e) => {
-                touchEndX = e.changedTouches[0].screenX;
-                const swipeDistance = touchEndX - touchStartX;
-                if (Math.abs(swipeDistance) > 50) {
-                    if (swipeDistance < 0) showNext();
-                    else showPrev();
-                }
+            let startX = 0;
+            lightbox.addEventListener('touchstart', e => startX = e.touches[0].clientX);
+            lightbox.addEventListener('touchend', e => {
+                const dx = e.changedTouches[0].clientX - startX;
+                if (dx > 50) prevImg();
+                if (dx < -50) nextImg();
             });
         });
     </script>

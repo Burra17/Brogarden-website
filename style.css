@@ -245,6 +245,28 @@ body {
     color: #f67280;
 }
 
+/* Utomhusmiljö (första sektionen i boende) */
+.boende-utomhus .room-images {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+    background: none;
+    padding: 0;
+}
+
+    .boende-utomhus .room-images img {
+        width: 100%;
+        height: 230px;
+        border-radius: 10px;
+        object-fit: cover;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        transition: transform 0.3s ease;
+    }
+
+        .boende-utomhus .room-images img:hover {
+            transform: scale(1.03);
+        }
+
 /* ==========================================================
    🖼️ Galleri
 ========================================================== */
@@ -357,7 +379,7 @@ footer {
 }
 
 /* ==========================================================
-   🖼️ Lightbox (klickbar bildvisning med pilar)
+   🖼️ Lightbox (klickbar bildvisning)
 ========================================================== */
 .lightbox {
     position: fixed;
@@ -469,6 +491,10 @@ footer {
     .room-images img {
         max-width: 45%;
         height: 140px;
+    }
+
+    .boende-utomhus .room-images {
+        grid-template-columns: 1fr 1fr;
     }
 }
 
