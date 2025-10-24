@@ -1,58 +1,86 @@
-/* Grundinställningar */
+/* ==========================================================
+   🌿 Brogården – Modern & Responsiv Design 2025
+   Färgtema: Havsblå (#2a4d69) & Varmrosa (#f67280)
+   Typografi: Sans-serif, ren och lättläst
+========================================================== */
+
+/* Reset & grund */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: "Segoe UI", Arial, sans-serif;
 }
 
 body {
-    line-height: 1.6;
     color: #333;
+    line-height: 1.6;
+    background-color: #ffffff;
 }
 
-/* Navigation */
+/* ==========================================================
+   🔝 Navigation
+========================================================== */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
     background: #2a4d69;
-    position: relative; /* Added for mobile menu positioning */
+    position: relative;
+    z-index: 10;
 }
 
-    .navbar .logo {
-        color: #fff;
-        font-size: 1.5rem;
-        font-weight: bold;
-    }
+.logo {
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
 
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 1.5rem;
-    z-index: 1000; /* Added to ensure menu appears above other elements */
+    gap: 1.8rem;
 }
 
     .nav-links a {
         color: #fff;
         text-decoration: none;
         font-weight: 500;
+        transition: all 0.2s ease-in-out;
     }
 
         .nav-links a:hover {
-            text-decoration: underline;
+            opacity: 0.8;
         }
 
-/* Hero sektion */
+        .nav-links a.active {
+            border-bottom: 2px solid #f67280;
+        }
+
+/* Mobilmeny */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+/* ==========================================================
+   🖼️ Hero
+========================================================== */
 .hero {
     background: url("images/hero.jpg") no-repeat center center/cover;
     height: 80vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
     color: white;
+    text-align: center;
     position: relative;
 }
 
@@ -63,17 +91,18 @@ body {
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0,0,0,0.4);
+        background: rgba(0, 0, 0, 0.4);
     }
 
 .hero-text {
     position: relative;
     z-index: 1;
-    max-width: 600px;
+    padding: 1rem;
+    max-width: 700px;
 }
 
 .hero h1 {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
     margin-bottom: 1rem;
 }
 
@@ -82,145 +111,185 @@ body {
     margin-bottom: 2rem;
 }
 
+.small-hero {
+    height: 45vh;
+}
+
 .btn {
     display: inline-block;
     background: #f67280;
-    color: white;
-    padding: 0.7rem 1.5rem;
-    border-radius: 5px;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
     text-decoration: none;
     font-weight: bold;
+    transition: background 0.3s ease;
 }
 
     .btn:hover {
         background: #c06c84;
     }
 
-/* Om oss */
+/* ==========================================================
+   💬 Om oss
+========================================================== */
 .about {
-    padding: 3rem 2rem;
-    background: #f4f4f4;
+    padding: 4rem 2rem;
+    background-color: #f4f4f4;
 }
 
     .about h2 {
         text-align: center;
         margin-bottom: 1rem;
+        color: #2a4d69;
     }
 
     .about p {
-        max-width: 700px;
+        max-width: 750px;
         margin: auto;
         text-align: center;
         font-size: 1.1rem;
     }
 
-/* Footer */
-footer {
-    background: #2a4d69;
-    color: white;
-    text-align: center;
-    padding: 1rem;
-    margin-top: 2rem;
-}
-
-/* Mindre hero för undersidor */
-.small-hero {
-    height: 40vh;
-}
-
-/* Boende */
+/* ==========================================================
+   🏡 Boende
+========================================================== */
 .rooms {
-    padding: 3rem 2rem;
+    padding: 4rem 2rem;
+    background-color: #fff;
 }
 
     .rooms .container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 2rem;
         max-width: 1100px;
         margin: auto;
     }
 
+/* Rubriker */
+.section-title {
+    text-align: center;
+    font-size: 2rem;
+    color: #2a4d69;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.5px;
+}
+
+.section-divider {
+    height: 3px;
+    background: linear-gradient(to right, transparent, #f67280, transparent);
+    width: 120px;
+    margin: 0 auto 3rem;
+    border-radius: 2px;
+}
+
+/* Kort */
 .room-card {
     background: #fff;
-    border-radius: 8px;
+    border-radius: 14px;
     overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    transition: transform 0.2s;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    margin-bottom: 3rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
     .room-card:hover {
         transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0,0,0,0.12);
     }
 
-    .room-card img {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
-    }
-
-/* === Nytt för flera bilder i samma rum (Lillstugan) === */
+/* Bilder i rum */
 .room-images {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 10px;
-    margin-bottom: 10px;
-    padding: 0.5rem;
-    justify-content: center; /* centrerar bilderna */
-    flex-wrap: wrap; /* gör att de bryts snyggt på små skärmar */
+    background: #f4f4f4;
+    padding: 0.8rem;
 }
 
     .room-images img {
         width: 100%;
-        max-width: 200px;
-        border-radius: 8px;
+        max-width: 210px;
+        height: 160px;
         object-fit: cover;
+        border-radius: 8px;
+        transition: transform 0.3s ease;
+        cursor: pointer;
     }
 
+        .room-images img:hover {
+            transform: scale(1.05);
+        }
+
+/* Text */
 .room-info {
-    padding: 1rem;
-}
-
-    .room-info h2 {
-        margin-bottom: 0.5rem;
-    }
-
-.price {
-    margin-top: 0.5rem;
-    font-weight: bold;
-    color: #2a4d69;
-}
-
-/* Kontakt */
-.contact {
-    padding: 3rem 2rem;
+    padding: 1.5rem;
     text-align: center;
 }
 
+    .room-info h3 {
+        font-size: 1.4rem;
+        color: #2a4d69;
+        margin-bottom: 0.5rem;
+    }
+
+    .room-info p {
+        font-size: 1rem;
+        color: #444;
+        margin-bottom: 0.5rem;
+        line-height: 1.5;
+    }
+
+.price {
+    margin-top: 0.8rem;
+    font-weight: bold;
+    color: #f67280;
+}
+
+/* ==========================================================
+   🖼️ Galleri
+========================================================== */
+.gallery {
+    padding: 4rem 2rem;
+    background-color: #f9f9f9;
+}
+
+    .gallery .container {
+        max-width: 1100px;
+        margin: auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1.2rem;
+    }
+
+    .gallery img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 10px;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+    }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+        }
+
+/* ==========================================================
+   📞 Kontakt
+========================================================== */
+.contact {
+    padding: 4rem 2rem;
+    text-align: center;
+    background: #fff;
+}
+
     .contact h2 {
+        color: #2a4d69;
         margin-bottom: 1rem;
     }
 
-    .contact p {
-        margin-bottom: 0.5rem;
-        font-size: 1.1rem;
-    }
-
-/* Aktiv länk i navigationen */
-.nav-links a.active {
-    border-bottom: 2px solid #f67280;
-}
-
-/* Mobilmeny-knapp */
-.menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    color: white;
-    font-size: 1.8rem;
-    cursor: pointer;
-}
-
-/* Kontaktlista */
 .contact-list {
     list-style: none;
     padding: 0;
@@ -228,12 +297,143 @@ footer {
 }
 
     .contact-list li {
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.8rem;
         font-size: 1.1rem;
     }
 
-/* Responsiv design */
-@media (max-width: 768px) {
+    .contact-list a {
+        color: #f67280;
+        text-decoration: none;
+    }
+
+        .contact-list a:hover {
+            text-decoration: underline;
+        }
+
+/* ==========================================================
+   📅 Program
+========================================================== */
+.activity-list {
+    padding: 4rem 2rem;
+    background: #f9f9f9;
+}
+
+    .activity-list .container {
+        max-width: 750px;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+.activity-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+    padding: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .activity-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 12px rgba(0,0,0,0.1);
+    }
+
+    .activity-card h2 {
+        margin-bottom: 0.5rem;
+        color: #2a4d69;
+    }
+
+/* ==========================================================
+   ⚙️ Footer
+========================================================== */
+footer {
+    background: #2a4d69;
+    color: white;
+    text-align: center;
+    padding: 1.2rem;
+    margin-top: 2rem;
+    font-size: 0.95rem;
+}
+
+/* ==========================================================
+   🖼️ Lightbox (klickbar bildvisning med pilar)
+========================================================== */
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 9999;
+}
+
+    .lightbox.show {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    .lightbox img {
+        max-width: 90%;
+        max-height: 80vh;
+        border-radius: 10px;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+    }
+
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+    .lightbox-close:hover {
+        color: #f67280;
+    }
+
+/* Pilar */
+.lightbox-prev,
+.lightbox-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    font-size: 3rem;
+    font-weight: bold;
+    cursor: pointer;
+    user-select: none;
+    padding: 0 15px;
+    transition: color 0.3s;
+}
+
+    .lightbox-prev:hover,
+    .lightbox-next:hover {
+        color: #f67280;
+    }
+
+.lightbox-prev {
+    left: 30px;
+}
+
+.lightbox-next {
+    right: 30px;
+}
+
+/* ==========================================================
+   📱 Responsiv design
+========================================================== */
+@media (max-width: 900px) {
     .nav-links {
         display: none;
         flex-direction: column;
@@ -241,9 +441,9 @@ footer {
         position: absolute;
         top: 60px;
         right: 0;
-        width: 200px;
+        width: 220px;
         padding: 1rem;
-        z-index: 1000; /* Added here too for mobile */
+        border-radius: 0 0 0 10px;
     }
 
         .nav-links.show {
@@ -254,37 +454,52 @@ footer {
         display: block;
     }
 
-    .hero h1 {
-        font-size: 2rem;
+    .hero {
+        height: 60vh;
     }
 
-    .hero p {
-        font-size: 1rem;
+        .hero h1 {
+            font-size: 2.2rem;
+        }
+
+        .hero p {
+            font-size: 1rem;
+        }
+
+    .room-images img {
+        max-width: 45%;
+        height: 140px;
     }
 }
 
-/* Programkort */
-.activity-list .container {
-    max-width: 700px;
-    margin: auto;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
-
-.activity-card {
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    padding: 1.5rem;
-}
-
-    .activity-card h2 {
-        margin-bottom: 0.5rem;
-        color: #2a4d69;
+@media (max-width: 600px) {
+    .hero {
+        height: 50vh;
     }
 
-    .activity-card p {
-        margin-bottom: 0.5rem;
+        .hero h1 {
+            font-size: 1.8rem;
+        }
+
+        .hero p {
+            font-size: 0.95rem;
+        }
+
+    .btn {
+        padding: 0.6rem 1.2rem;
     }
+
+    .gallery img {
+        height: 200px;
+    }
+
+    .lightbox-prev,
+    .lightbox-next {
+        font-size: 2.2rem;
+    }
+
+    .lightbox img {
+        max-width: 95%;
+        max-height: 70vh;
+    }
+}

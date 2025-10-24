@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Navigation -->
     <header>
         <nav class="navbar">
             <a href="index.html" class="logo">Brogården</a>
@@ -16,55 +15,102 @@
             <ul class="nav-links">
                 <li><a href="index.html" class="active">Hem</a></li>
                 <li><a href="boende.html">Boende</a></li>
+                <li><a href="bilder.html">Bilder</a></li>
                 <li><a href="kontakt.html">Kontakt</a></li>
                 <li><a href="program.html">Program</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- Hero section -->
     <section class="hero">
         <div class="hero-text">
             <h1>Välkommen till Brogården!</h1>
-            <p>
-                Lägergård, Vandrarhem, EFS-kyrka belägen i lugn och naturskön miljö nära havet.
-                En kristen mötesplats med utrymme för för vila, glädje och gemenskap.
-            </p>
+            <p>Lägergård, vandrarhem och EFS-kyrka i lugn och naturskön miljö nära havet. En plats för vila, gemenskap och glädje.</p>
             <a href="boende.html" class="btn">Se våra rum & stugor</a>
         </div>
     </section>
 
-    <!-- Om oss -->
     <section class="about">
         <div class="container">
             <h2>Om Brogården</h2>
-            <p>
-                Brogården drivs ideellt av en lokal EFS-förening. 
-                Här erbjuds billig logi i rum och stuga samt ställplatser för husbil och tält. 
-                Hela gården kan hyras för läger, föreningsdagar, dop, släktträff etc. 
-                Brogården anordnar läger varje år samt bjuder in till gudstjänster samt sång- och musikprogram på söndagskvällarna.
-            </p>
+            <p>Brogården drivs ideellt av en lokal EFS-förening. Här erbjuds prisvärt boende i rum och stugor samt ställplatser för husbil och tält. Gården används även för läger, dop, bröllop, föreningsdagar och konserter.</p>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <p>© 2025 Brogården – Alla rättigheter förbehållna</p>
     </footer>
 
-    <!-- Mobilmeny-script -->
+    <!-- Mobilmeny + Lightbox -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const menuToggle = document.querySelector('.menu-toggle');
             const navLinks = document.querySelector('.nav-links');
-
             if (menuToggle && navLinks) {
                 menuToggle.addEventListener('click', () => {
                     navLinks.classList.toggle('show');
                 });
             }
+
+            // Lightbox med gruppbläddring
+            const lightbox = document.createElement('div');
+            lightbox.classList.add('lightbox');
+            lightbox.innerHTML = `
+                    <span class="lightbox-close">&times;</span>
+                    <span class="lightbox-prev">&#10094;</span>
+                    <span class="lightbox-next">&#10095;</span>
+                    <img src="" alt="Förstorad bild">
+                `;
+            document.body.appendChild(lightbox);
+
+            const lightboxImg = lightbox.querySelector('img');
+            const closeBtn = lightbox.querySelector('.lightbox-close');
+            const prevBtn = lightbox.querySelector('.lightbox-prev');
+            const nextBtn = lightbox.querySelector('.lightbox-next');
+
+            let currentGroup = [];
+            let currentIndex = 0;
+
+            const showImage = (index) => {
+                if (!currentGroup.length) return;
+                lightboxImg.src = currentGroup[index].src;
+                currentIndex = index;
+                lightbox.classList.add('show');
+            };
+
+            document.querySelectorAll('.room-card, .gallery').forEach(group => {
+                const groupImages = Array.from(group.querySelectorAll('img'));
+                groupImages.forEach((img, i) => {
+                    img.addEventListener('click', () => {
+                        currentGroup = groupImages;
+                        showImage(i);
+                    });
+                });
+            });
+
+            const showNext = () => showImage((currentIndex + 1) % currentGroup.length);
+            const showPrev = () => showImage((currentIndex - 1 + currentGroup.length) % currentGroup.length);
+
+            nextBtn.addEventListener('click', showNext);
+            prevBtn.addEventListener('click', showPrev);
+
+            const closeLightbox = () => {
+                lightbox.classList.remove('show');
+                currentGroup = [];
+            };
+
+            closeBtn.addEventListener('click', closeLightbox);
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) closeLightbox();
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (!lightbox.classList.contains('show')) return;
+                if (e.key === 'ArrowRight') showNext();
+                if (e.key === 'ArrowLeft') showPrev();
+                if (e.key === 'Escape') closeLightbox();
+            });
         });
     </script>
-
 </body>
 </html>

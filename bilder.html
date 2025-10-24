@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bilder – Brogården</title>
+    <meta name="description" content="Se bilder från Brogårdens vackra utomhusmiljö – sjön, byggnaderna och den gröna trädgården.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">Brogården</a>
+            <button class="menu-toggle" aria-label="Öppna meny">☰</button>
+            <ul class="nav-links">
+                <li><a href="index.html">Hem</a></li>
+                <li><a href="boende.html">Boende</a></li>
+                <li><a href="bilder.html" class="active">Bilder</a></li>
+                <li><a href="kontakt.html">Kontakt</a></li>
+                <li><a href="program.html">Program</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero small-hero">
+        <div class="hero-text">
+            <h1>Bilder från Brogården</h1>
+            <p>Upptäck den natursköna miljön runt Brogården – gården, naturen och den fridfulla omgivningen.</p>
+        </div>
+    </section>
+
+    <!-- Galleri -->
+    <section class="gallery">
+        <div class="container">
+            <img src="images/ute1.jpg" alt="Brogården under norrsken">
+            <img src="images/ute2.jpg" alt="Huvudbyggnaden på Brogården i kvällsljus">
+            <img src="images/ute3.jpg" alt="Brogården med flaggan hissad en solig dag">
+            <img src="images/ute4.jpg" alt="Lekplats och gårdsplan vid Brogården">
+            <img src="images/ute5.jpg" alt="Grönskande trädgård och livboj vid Brogården">
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Brogården – Alla rättigheter förbehållna</p>
+    </footer>
+
+    <!-- === Mobilmeny + Lightbox med swipe === -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // === Mobilmeny ===
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            if (menuToggle && navLinks) {
+                menuToggle.addEventListener('click', () => {
+                    navLinks.classList.toggle('show');
+                });
+            }
+
+            // === Lightbox ===
+            const lightbox = document.createElement('div');
+            lightbox.classList.add('lightbox');
+            lightbox.innerHTML = `
+                <span class="lightbox-close">&times;</span>
+                <span class="lightbox-prev">&#10094;</span>
+                <span class="lightbox-next">&#10095;</span>
+                <img src="" alt="Förstorad bild">
+            `;
+            document.body.appendChild(lightbox);
+
+            const lightboxImg = lightbox.querySelector('img');
+            const closeBtn = lightbox.querySelector('.lightbox-close');
+            const prevBtn = lightbox.querySelector('.lightbox-prev');
+            const nextBtn = lightbox.querySelector('.lightbox-next');
+
+            let currentGroup = [];
+            let currentIndex = 0;
+
+            const showImage = (index) => {
+                if (!currentGroup.length) return;
+                lightboxImg.src = currentGroup[index].src;
+                currentIndex = index;
+                lightbox.classList.add('show');
+            };
+
+            // Hämta alla bilder
+            const gallery = document.querySelector('.gallery .container');
+            const images = Array.from(gallery.querySelectorAll('img'));
+            images.forEach((img, i) => {
+                img.style.cursor = "pointer";
+                img.addEventListener('click', () => {
+                    currentGroup = images;
+                    showImage(i);
+                });
+            });
+
+            const showNext = () => showImage((currentIndex + 1) % currentGroup.length);
+            const showPrev = () => showImage((currentIndex - 1 + currentGroup.length) % currentGroup.length);
+
+            nextBtn.addEventListener('click', showNext);
+            prevBtn.addEventListener('click', showPrev);
+
+            const closeLightbox = () => {
+                lightbox.classList.remove('show');
+                currentGroup = [];
+            };
+
+            closeBtn.addEventListener('click', closeLightbox);
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) closeLightbox();
+            });
+
+            // Tangentbord
+            document.addEventListener('keydown', (e) => {
+                if (!lightbox.classList.contains('show')) return;
+                if (e.key === 'ArrowRight') showNext();
+                if (e.key === 'ArrowLeft') showPrev();
+                if (e.key === 'Escape') closeLightbox();
+            });
+
+            // === Swipe-stöd för mobil ===
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            lightbox.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            });
+
+            lightbox.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            });
+
+            const handleSwipe = () => {
+                const swipeDistance = touchEndX - touchStartX;
+                if (Math.abs(swipeDistance) > 50) { // svep längre än 50px
+                    if (swipeDistance < 0) {
+                        showNext(); // svep vänster
+                    } else {
+                        showPrev(); // svep höger
+                    }
+                }
+            };
+        });
+    </script>
+</body>
+</html>
