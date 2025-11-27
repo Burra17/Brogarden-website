@@ -1,63 +1,118 @@
 /* ==========================================================
    🌿 Brogården – Modern & Responsiv Design 2025
    Färgtema: Havsblå (#2a4d69) & Varmrosa (#f67280)
-   Typografi: Sans-serif, ren och lättläst
 ========================================================== */
+
+:root {
+    --primary: #1a365d;
+    --primary-light: #2d4a6f;
+    --accent: #10b981;
+    --accent-hover: #059669;
+    --light-bg: #f8f9fa;
+    --text-dark: #2c3e50;
+    --text-light: #6c757d;
+    --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+    --shadow-md: 0 4px 16px rgba(0,0,0,0.12);
+    --shadow-lg: 0 8px 24px rgba(0,0,0,0.16);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
 /* Reset & grund */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Segoe UI", Arial, sans-serif;
 }
 
 body {
-    color: #333;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: var(--text-dark);
     line-height: 1.6;
     background-color: #ffffff;
+    overflow-x: hidden;
+}
+
+/* Smooth scroll */
+html {
+    scroll-behavior: smooth;
 }
 
 /* ==========================================================
-   🔝 Navigation
+   🔝 Navigation - Modernare glassmorfism-stil
 ========================================================== */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
-    background: #2a4d69;
-    position: relative;
-    z-index: 10;
+    padding: 1.2rem 5%;
+    background: linear-gradient(135deg, #1a365d 0%, #2d4a6f 100%);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.15);
+    transition: var(--transition);
 }
+
+    .navbar.scrolled {
+        padding: 0.8rem 5%;
+        box-shadow: 0 4px 25px rgba(0,0,0,0.2);
+    }
 
 .logo {
     color: #fff;
     font-weight: 700;
-    font-size: 1.6rem;
+    font-size: 1.75rem;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
+    text-decoration: none;
+    transition: var(--transition);
 }
+
+    .logo:hover {
+        color: var(--accent);
+        transform: translateY(-2px);
+    }
 
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 1.8rem;
+    gap: 2.5rem;
+    align-items: center;
 }
 
     .nav-links a {
-        color: #fff;
+        color: rgba(255,255,255,0.9);
         text-decoration: none;
         font-weight: 500;
-        transition: all 0.2s ease-in-out;
+        font-size: 1rem;
+        position: relative;
+        padding: 0.5rem 0;
+        transition: var(--transition);
     }
 
-        .nav-links a:hover {
-            opacity: 0.8;
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
         }
 
+        .nav-links a:hover {
+            color: #fff;
+        }
+
+            .nav-links a:hover::after,
+            .nav-links a.active::after {
+                width: 100%;
+            }
+
         .nav-links a.active {
-            border-bottom: 2px solid #f67280;
+            color: #fff;
         }
 
 /* Mobilmeny */
@@ -66,22 +121,73 @@ body {
     background: none;
     border: none;
     color: white;
-    font-size: 1.8rem;
+    width: 40px;
+    height: 40px;
     cursor: pointer;
+    position: relative;
+    z-index: 1001;
+}
+
+.hamburger {
+    display: block;
+    width: 25px;
+    height: 2px;
+    background: white;
+    position: relative;
+    transition: var(--transition);
+}
+
+    .hamburger::before,
+    .hamburger::after {
+        content: '';
+        position: absolute;
+        width: 25px;
+        height: 2px;
+        background: white;
+        transition: var(--transition);
+    }
+
+    .hamburger::before {
+        top: -8px;
+    }
+
+    .hamburger::after {
+        top: 8px;
+    }
+
+.menu-toggle.active .hamburger {
+    background: transparent;
+}
+
+    .menu-toggle.active .hamburger::before {
+        transform: rotate(45deg);
+        top: 0;
+    }
+
+    .menu-toggle.active .hamburger::after {
+        transform: rotate(-45deg);
+        top: 0;
+    }
+
+.menu-toggle:hover .hamburger,
+.menu-toggle:hover .hamburger::before,
+.menu-toggle:hover .hamburger::after {
+    background: var(--accent);
 }
 
 /* ==========================================================
-   🖼️ Hero
+   🖼️ Hero - Modernare med gradient overlay
 ========================================================== */
 .hero {
     background: url("images/hero.jpg") no-repeat center center/cover;
-    height: 80vh;
+    min-height: 85vh;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
     text-align: center;
     position: relative;
+    overflow: hidden;
 }
 
     .hero::after {
@@ -91,257 +197,321 @@ body {
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.4);
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.3) 100%);
+        z-index: 1;
     }
 
 .hero-text {
     position: relative;
-    z-index: 1;
-    padding: 1rem;
-    max-width: 700px;
+    z-index: 2;
+    padding: 2rem;
+    max-width: 800px;
+    animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .hero h1 {
-    font-size: 2.8rem;
-    margin-bottom: 1rem;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    margin-bottom: 1.5rem;
+    font-weight: 800;
+    text-shadow: 2px 4px 12px rgba(0,0,0,0.6), 0 0 20px rgba(0,0,0,0.4);
+    letter-spacing: 1px;
 }
 
 .hero p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    margin-bottom: 2.5rem;
+    line-height: 1.8;
+    text-shadow: 1px 2px 8px rgba(0,0,0,0.6), 0 0 15px rgba(0,0,0,0.4);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .small-hero {
-    height: 45vh;
+    min-height: 50vh;
 }
 
 .btn {
     display: inline-block;
-    background: #f67280;
+    background: var(--accent);
     color: #fff;
-    padding: 0.75rem 1.5rem;
-    border-radius: 6px;
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
     text-decoration: none;
-    font-weight: bold;
-    transition: background 0.3s ease;
+    font-weight: 600;
+    font-size: 1.05rem;
+    letter-spacing: 0.5px;
+    transition: var(--transition);
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+    border: 2px solid transparent;
 }
 
     .btn:hover {
-        background: #c06c84;
+        background: var(--accent-hover);
+        transform: translateY(-3px);
+        box-shadow: 0 6px 25px rgba(16, 185, 129, 0.4);
     }
 
 /* ==========================================================
-   💬 Om oss
+   💬 Om oss - Modernare layout
 ========================================================== */
 .about {
-    padding: 4rem 2rem;
-    background-color: #f4f4f4;
+    padding: 5rem 5%;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
 }
+
+    .about .container {
+        max-width: 900px;
+        margin: auto;
+    }
 
     .about h2 {
         text-align: center;
-        margin-bottom: 1rem;
-        color: #2a4d69;
+        margin-bottom: 1.5rem;
+        color: var(--primary);
+        font-size: clamp(1.8rem, 4vw, 2.5rem);
+        font-weight: 700;
     }
 
     .about p {
-        max-width: 750px;
-        margin: auto;
         text-align: center;
-        font-size: 1.1rem;
+        font-size: clamp(1rem, 2vw, 1.2rem);
+        line-height: 1.8;
+        color: var(--text-light);
     }
 
 /* ==========================================================
-   🏡 Boende
+   🏡 Boende - Modernare kortstil
 ========================================================== */
 .rooms {
-    padding: 4rem 2rem;
+    padding: 5rem 5%;
     background-color: #fff;
 }
 
     .rooms .container {
-        max-width: 1100px;
+        max-width: 1200px;
         margin: auto;
     }
 
-/* Rubriker */
+/* Rubriker med modernare stil */
 .section-title {
     text-align: center;
-    font-size: 2rem;
-    color: #2a4d69;
-    margin-bottom: 0.5rem;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    color: var(--primary);
+    margin-bottom: 1rem;
+    font-weight: 700;
     letter-spacing: 0.5px;
 }
 
 .section-divider {
-    height: 3px;
-    background: linear-gradient(to right, transparent, #f67280, transparent);
-    width: 120px;
-    margin: 0 auto 3rem;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    width: 100px;
+    margin: 0 auto 4rem;
     border-radius: 2px;
 }
 
-/* Kort */
+/* Modernare kort med bättre hover-effekt */
 .room-card {
     background: #fff;
-    border-radius: 14px;
+    border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    box-shadow: var(--shadow-sm);
     margin-bottom: 3rem;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: var(--transition);
+    border: 1px solid rgba(0,0,0,0.05);
 }
 
     .room-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-lg);
     }
 
-/* Bilder i rum */
+/* Bilder i rum - Grid layout */
 .room-images {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0;
     background: #f4f4f4;
-    padding: 0.8rem;
 }
 
     .room-images img {
         width: 100%;
-        max-width: 210px;
-        height: 160px;
+        height: 200px;
         object-fit: cover;
-        border-radius: 8px;
-        transition: transform 0.3s ease;
+        transition: var(--transition);
         cursor: pointer;
     }
 
         .room-images img:hover {
             transform: scale(1.05);
+            filter: brightness(1.1);
         }
 
 /* Text */
 .room-info {
-    padding: 1.5rem;
-    text-align: center;
+    padding: 2rem;
 }
 
     .room-info h3 {
-        font-size: 1.4rem;
-        color: #2a4d69;
-        margin-bottom: 0.5rem;
+        font-size: 1.6rem;
+        color: var(--primary);
+        margin-bottom: 1rem;
+        font-weight: 700;
     }
 
     .room-info p {
-        font-size: 1rem;
-        color: #444;
-        margin-bottom: 0.5rem;
-        line-height: 1.5;
+        font-size: 1.05rem;
+        color: var(--text-light);
+        margin-bottom: 0.8rem;
+        line-height: 1.7;
     }
 
 .price {
-    margin-top: 0.8rem;
-    font-weight: bold;
-    color: #f67280;
+    margin-top: 1.2rem;
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: var(--accent);
 }
 
-/* Utomhusmiljö (första sektionen i boende) */
+/* Utomhusmiljö */
 .boende-utomhus .room-images {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
     background: none;
     padding: 0;
 }
 
     .boende-utomhus .room-images img {
         width: 100%;
-        height: 230px;
-        border-radius: 10px;
-        object-fit: cover;
-        box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-        transition: transform 0.3s ease;
+        height: 280px;
+        border-radius: 16px;
+        box-shadow: var(--shadow-sm);
     }
 
         .boende-utomhus .room-images img:hover {
-            transform: scale(1.03);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
         }
 
 /* ==========================================================
-   🖼️ Galleri
+   🖼️ Galleri - Masonry-inspirerad layout
 ========================================================== */
 .gallery {
-    padding: 4rem 2rem;
-    background-color: #f9f9f9;
+    padding: 5rem 5%;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
 }
 
     .gallery .container {
-        max-width: 1100px;
+        max-width: 1200px;
         margin: auto;
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-        gap: 1.2rem;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
     }
 
     .gallery img {
         width: 100%;
-        height: 250px;
+        height: 300px;
         object-fit: cover;
-        border-radius: 10px;
-        box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border-radius: 16px;
+        box-shadow: var(--shadow-sm);
+        transition: var(--transition);
         cursor: pointer;
     }
 
         .gallery img:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--shadow-lg);
         }
 
 /* ==========================================================
-   📞 Kontakt
+   📞 Kontakt - Med ikoner
 ========================================================== */
 .contact {
-    padding: 4rem 2rem;
+    padding: 5rem 5%;
     text-align: center;
     background: #fff;
 }
 
     .contact h2 {
-        color: #2a4d69;
-        margin-bottom: 1rem;
+        color: var(--primary);
+        margin-bottom: 2rem;
+        font-size: clamp(1.8rem, 4vw, 2.5rem);
+        font-weight: 700;
     }
 
 .contact-list {
     list-style: none;
     padding: 0;
-    margin: 1rem 0 2rem;
+    margin: 2rem auto;
+    display: inline-block;
+    text-align: left;
+    max-width: 600px;
 }
 
     .contact-list li {
-        margin-bottom: 0.8rem;
-        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+        font-size: 1.15rem;
+        padding: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        background: var(--light-bg);
+        border-radius: 12px;
+        transition: var(--transition);
     }
 
-    .contact-list a {
-        color: #f67280;
-        text-decoration: none;
-    }
-
-        .contact-list a:hover {
-            text-decoration: underline;
+        .contact-list li:hover {
+            background: #e9ecef;
+            transform: translateX(5px);
         }
 
+.contact-icon {
+    width: 24px;
+    height: 24px;
+    color: var(--accent);
+    flex-shrink: 0;
+}
+
+.contact-list a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+    .contact-list a:hover {
+        color: var(--primary);
+    }
+
+.contact .btn {
+    margin-top: 2rem;
+}
+
 /* ==========================================================
-   📅 Program
+   📅 Program - Modernare kort med datum
 ========================================================== */
 .activity-list {
-    padding: 4rem 2rem;
-    background: #f9f9f9;
+    padding: 5rem 5%;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
 }
 
     .activity-list .container {
-        max-width: 750px;
+        max-width: 900px;
         margin: auto;
         display: flex;
         flex-direction: column;
@@ -350,36 +520,79 @@ body {
 
 .activity-card {
     background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
-    padding: 1.5rem;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 16px;
+    box-shadow: var(--shadow-sm);
+    padding: 0;
+    transition: var(--transition);
+    border-left: 4px solid var(--accent);
+    display: flex;
+    overflow: hidden;
 }
 
     .activity-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 12px rgba(0,0,0,0.1);
+        transform: translateX(8px);
+        box-shadow: var(--shadow-md);
     }
 
-    .activity-card h2 {
-        margin-bottom: 0.5rem;
-        color: #2a4d69;
-    }
+.activity-date {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    color: white;
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 120px;
+    text-align: center;
+}
+
+.date-day {
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+
+.date-month {
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.9;
+}
+
+.activity-content {
+    padding: 2rem;
+    flex: 1;
+}
+
+.activity-card h2 {
+    margin-bottom: 1rem;
+    color: var(--primary);
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+.activity-card p {
+    color: var(--text-light);
+    line-height: 1.7;
+    margin-bottom: 0.5rem;
+}
 
 /* ==========================================================
    ⚙️ Footer
 ========================================================== */
 footer {
-    background: #2a4d69;
+    background: var(--primary);
     color: white;
     text-align: center;
-    padding: 1.2rem;
-    margin-top: 2rem;
-    font-size: 0.95rem;
+    padding: 2rem;
+    margin-top: 3rem;
+    font-size: 1rem;
 }
 
 /* ==========================================================
-   🖼️ Lightbox (klickbar bildvisning)
+   🖼️ Lightbox - Modernare design med räknare
 ========================================================== */
 .lightbox {
     position: fixed;
@@ -387,13 +600,14 @@ footer {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.85);
+    background: rgba(0, 0, 0, 0.92);
+    backdrop-filter: blur(10px);
     display: flex;
     align-items: center;
     justify-content: center;
     visibility: hidden;
     opacity: 0;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
+    transition: var(--transition);
     z-index: 9999;
 }
 
@@ -404,24 +618,60 @@ footer {
 
     .lightbox img {
         max-width: 90%;
-        max-height: 80vh;
-        border-radius: 10px;
-        box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+        max-height: 85vh;
+        border-radius: 12px;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+        animation: zoomIn 0.3s ease-out;
     }
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.lightbox-counter {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    background: rgba(0,0,0,0.6);
+    padding: 0.5rem 1.5rem;
+    border-radius: 25px;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
 
 .lightbox-close {
     position: absolute;
-    top: 20px;
-    right: 30px;
+    top: 30px;
+    right: 40px;
     color: white;
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-weight: bold;
     cursor: pointer;
-    transition: color 0.3s;
+    transition: var(--transition);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,0.1);
+    border: none;
 }
 
     .lightbox-close:hover {
-        color: #f67280;
+        color: var(--accent);
+        background: rgba(255,255,255,0.2);
+        transform: rotate(90deg);
     }
 
 /* Pilar */
@@ -435,97 +685,207 @@ footer {
     font-weight: bold;
     cursor: pointer;
     user-select: none;
-    padding: 0 15px;
-    transition: color 0.3s;
+    padding: 1rem 1.5rem;
+    transition: var(--transition);
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    border: none;
 }
 
     .lightbox-prev:hover,
     .lightbox-next:hover {
-        color: #f67280;
+        color: var(--accent);
+        background: rgba(255,255,255,0.2);
+        transform: translateY(-50%) scale(1.1);
     }
 
 .lightbox-prev {
-    left: 30px;
+    left: 40px;
 }
 
 .lightbox-next {
-    right: 30px;
+    right: 40px;
 }
 
 /* ==========================================================
    📱 Responsiv design
 ========================================================== */
 @media (max-width: 900px) {
+    .navbar {
+        padding: 1rem 4%;
+    }
+
     .nav-links {
         display: none;
         flex-direction: column;
-        background: #2a4d69;
-        position: absolute;
-        top: 60px;
+        background: linear-gradient(135deg, rgba(26, 54, 93, 0.98) 0%, rgba(45, 74, 111, 0.98) 100%);
+        backdrop-filter: blur(10px);
+        position: fixed;
+        top: 0;
         right: 0;
-        width: 220px;
-        padding: 1rem;
-        border-radius: 0 0 0 10px;
+        width: 100%;
+        max-width: 320px;
+        height: 100vh;
+        padding: 5rem 2rem 2rem;
+        box-shadow: var(--shadow-lg);
+        gap: 1rem;
+        overflow-y: auto;
     }
 
         .nav-links.show {
             display: flex;
+            animation: slideIn 0.3s ease-out;
+        }
+
+    @keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateX(100%);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    .nav-links li {
+        width: 100%;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 1rem;
+        border-radius: 8px;
+        transition: var(--transition);
+    }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            background: rgba(255,255,255,0.1);
         }
 
     .menu-toggle {
-        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .hero {
-        height: 60vh;
+        min-height: 70vh;
     }
 
-        .hero h1 {
-            font-size: 2.2rem;
-        }
-
-        .hero p {
-            font-size: 1rem;
-        }
-
-    .room-images img {
-        max-width: 45%;
-        height: 140px;
+    .room-images {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     }
 
     .boende-utomhus .room-images {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .about,
+    .rooms,
+    .gallery,
+    .contact,
+    .activity-list {
+        padding: 3rem 4%;
+    }
+
+    .activity-card {
+        flex-direction: column;
+    }
+
+    .activity-date {
+        width: 100%;
+        padding: 1.5rem;
+        flex-direction: row;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .date-day {
+        font-size: 2rem;
+        margin-bottom: 0;
     }
 }
 
 @media (max-width: 600px) {
-    .hero {
-        height: 50vh;
+    .navbar {
+        padding: 1rem 5%;
     }
 
-        .hero h1 {
-            font-size: 1.8rem;
-        }
+    .logo {
+        font-size: 1.4rem;
+    }
 
-        .hero p {
-            font-size: 0.95rem;
-        }
+    .hero {
+        min-height: 60vh;
+    }
 
     .btn {
-        padding: 0.6rem 1.2rem;
+        padding: 0.8rem 2rem;
+        font-size: 0.95rem;
+    }
+
+    .room-images {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+    }
+
+        .room-images img {
+            height: 150px;
+        }
+
+    .gallery .container {
+        grid-template-columns: 1fr;
+        gap: 1rem;
     }
 
     .gallery img {
-        height: 200px;
+        height: 250px;
     }
 
     .lightbox-prev,
     .lightbox-next {
-        font-size: 2.2rem;
+        font-size: 2rem;
+        padding: 0.8rem 1rem;
+    }
+
+    .lightbox-prev {
+        left: 20px;
+    }
+
+    .lightbox-next {
+        right: 20px;
     }
 
     .lightbox img {
         max-width: 95%;
-        max-height: 70vh;
+        max-height: 75vh;
     }
+
+    .lightbox-close {
+        top: 20px;
+        right: 20px;
+        font-size: 2rem;
+    }
+
+    .section-title {
+        margin-bottom: 0.8rem;
+    }
+
+    .section-divider {
+        margin-bottom: 2.5rem;
+    }
+}
+
+/* Extra små enheter */
+@media (max-width: 400px) {
+    .room-images {
+        grid-template-columns: 1fr;
+    }
+
+        .room-images img {
+            height: 180px;
+        }
 }
