@@ -3,72 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Program – Vandrarhemmet Brogården</title>
+    <title>Program – Brogården Vandrarhem</title>
     <meta name="description" content="Kommande aktiviteter på Brogården: sångläger, gudstjänster och mycket mer.">
+    <meta name="theme-color" content="#1a365d">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Navigation -->
     <header>
         <nav class="navbar">
-            <a href="index.html" class="logo">Brogården</a>
-            <button class="menu-toggle" aria-label="Öppna meny">☰</button>
-            <ul class="nav-links">
+            <a href="index.html" class="logo" aria-label="Brogården startsida">Brogården</a>
+            <button class="menu-toggle" aria-label="Öppna meny" aria-expanded="false">
+                <span class="hamburger"></span>
+            </button>
+            <ul class="nav-links" role="navigation">
                 <li><a href="index.html">Hem</a></li>
                 <li><a href="boende.html">Boende</a></li>
                 <li><a href="bilder.html">Bilder</a></li>
                 <li><a href="kontakt.html">Kontakt</a></li>
-                <li><a href="program.html" class="active">Program</a></li>
+                <li><a href="program.html" class="active" aria-current="page">Program</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- Hero sektion -->
-    <section class="hero small-hero">
-        <div class="hero-text">
-            <h1>Program & Aktiviteter</h1>
-            <p>Här hittar du kommande aktiviteter på Brogården.</p>
-        </div>
-    </section>
+    <main>
+        <section class="hero small-hero">
+            <div class="hero-text">
+                <h1>Program & Aktiviteter</h1>
+                <p>Här hittar du kommande aktiviteter på Brogården.</p>
+            </div>
+        </section>
 
-    <!-- Aktivitetslista -->
-    <section class="activity-list">
-        <div class="container">
+        <section class="activity-list">
+            <div class="container">
+                <article class="activity-card">
+                    <div class="activity-date">
+                        <span class="date-day">12-15</span>
+                        <span class="date-month">Juni 2025</span>
+                    </div>
+                    <div class="activity-content">
+                        <h2>Sångläger</h2>
+                        <p>Välkommen till vårt populära sångläger för både unga och gamla! Vi sjunger, umgås och har roligt tillsammans.</p>
+                    </div>
+                </article>
 
-            <article class="activity-card">
-                <h2>Sångläger</h2>
-                <p><strong>Datum:</strong> 12–15 juni 2025</p>
-                <p>Välkommen till vårt populära sångläger för både unga och gamla! Vi sjunger, umgås och har roligt tillsammans.</p>
-            </article>
+                <article class="activity-card">
+                    <div class="activity-date">
+                        <span class="date-day">22</span>
+                        <span class="date-month">Juni 2025</span>
+                    </div>
+                    <div class="activity-content">
+                        <h2>Gudstjänst</h2>
+                        <p>Gemensam gudstjänst i vår samlingssal. Alla är välkomna!</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
 
-            <article class="activity-card">
-                <h2>Gudstjänst</h2>
-                <p><strong>Datum:</strong> 22 juni 2025</p>
-                <p>Gemensam gudstjänst i vår samlingssal. Alla är välkomna!</p>
-            </article>
-
-            <!-- Lägg till fler aktiviteter vid behov -->
-
-        </div>
-    </section>
-
-    <!-- Footer -->
     <footer>
         <p>© 2025 Brogården – Alla rättigheter förbehållna</p>
     </footer>
 
-    <!-- Mobilmeny-script -->
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const menuToggle = document.querySelector('.menu-toggle');
-            const navLinks = document.querySelector('.nav-links');
-
-            if (menuToggle && navLinks) {
-                menuToggle.addEventListener('click', () => {
-                    navLinks.classList.toggle('show');
-                });
-            }
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
