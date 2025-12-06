@@ -745,3 +745,40 @@ footer {
         font-size: 1.5rem;
     }
 }
+
+/* ==========================================================
+   📅 Google Kalender - Responsiv inbäddning
+========================================================== */
+.calendar-section {
+    padding: 5rem 5%;
+    background: #fff;
+    text-align: center;
+}
+
+.calendar-wrapper {
+    position: relative;
+    padding-bottom: 75%; /* Detta ger kalendern rätt proportioner (höjd) */
+    height: 0;
+    overflow: hidden;
+    max-width: 1000px;
+    margin: 0 auto;
+    border-radius: 16px;
+    box-shadow: var(--shadow-md);
+    background: #fff;
+}
+
+    .calendar-wrapper iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+    }
+
+/* Mobiljustering */
+@media (max-width: 600px) {
+    .calendar-wrapper {
+        padding-bottom: 120%; /* Gör den högre i mobilen så man ser mer */
+    }
+}
