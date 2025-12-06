@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Navigation -->
     <header>
         <nav class="navbar">
             <a href="index.html" class="logo">Brogården</a>
@@ -23,7 +22,6 @@
         </nav>
     </header>
 
-    <!-- Hero -->
     <section class="hero small-hero">
         <div class="hero-text">
             <h1>Bo på Brogården</h1>
@@ -31,7 +29,6 @@
         </div>
     </section>
 
-    <!-- 🌿 Utomhusmiljö -->
     <section class="rooms">
         <div class="container">
             <h2 class="section-title">Utomhusmiljö</h2>
@@ -55,7 +52,6 @@
         </div>
     </section>
 
-    <!-- Rum -->
     <section class="rooms">
         <div class="container">
             <h2 class="section-title">Rum</h2>
@@ -75,7 +71,6 @@
         </div>
     </section>
 
-    <!-- Stugor -->
     <section class="rooms">
         <div class="container">
             <h2 class="section-title">Stugor</h2>
@@ -137,83 +132,10 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <p>© 2025 Brogården – Alla rättigheter förbehållna</p>
     </footer>
 
-    <!-- Script: Mobilmeny + Lightbox med swipe -->
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const menuToggle = document.querySelector('.menu-toggle');
-            const navLinks = document.querySelector('.nav-links');
-            if (menuToggle && navLinks) {
-                menuToggle.addEventListener('click', () => {
-                    navLinks.classList.toggle('show');
-                });
-            }
-
-            const lightbox = document.createElement('div');
-            lightbox.classList.add('lightbox');
-            lightbox.innerHTML = `
-                <span class="lightbox-close">&times;</span>
-                <span class="lightbox-prev">&#10094;</span>
-                <span class="lightbox-next">&#10095;</span>
-                <img src="" alt="Förstorad bild">
-            `;
-            document.body.appendChild(lightbox);
-
-            const imgEl = lightbox.querySelector('img');
-            const close = lightbox.querySelector('.lightbox-close');
-            const prev = lightbox.querySelector('.lightbox-prev');
-            const next = lightbox.querySelector('.lightbox-next');
-
-            let group = [];
-            let index = 0;
-
-            const show = (i) => {
-                if (!group.length) return;
-                imgEl.src = group[i].src;
-                index = i;
-                lightbox.classList.add('show');
-            };
-
-            document.querySelectorAll('.room-card').forEach(card => {
-                const imgs = Array.from(card.querySelectorAll('img'));
-                imgs.forEach((img, i) => {
-                    img.style.cursor = "pointer";
-                    img.addEventListener('click', () => {
-                        group = imgs;
-                        show(i);
-                    });
-                });
-            });
-
-            const nextImg = () => show((index + 1) % group.length);
-            const prevImg = () => show((index - 1 + group.length) % group.length);
-            next.addEventListener('click', nextImg);
-            prev.addEventListener('click', prevImg);
-            close.addEventListener('click', () => lightbox.classList.remove('show'));
-
-            lightbox.addEventListener('click', e => {
-                if (e.target === lightbox) lightbox.classList.remove('show');
-            });
-
-            document.addEventListener('keydown', e => {
-                if (!lightbox.classList.contains('show')) return;
-                if (e.key === 'ArrowRight') nextImg();
-                if (e.key === 'ArrowLeft') prevImg();
-                if (e.key === 'Escape') lightbox.classList.remove('show');
-            });
-
-            let startX = 0;
-            lightbox.addEventListener('touchstart', e => startX = e.touches[0].clientX);
-            lightbox.addEventListener('touchend', e => {
-                const dx = e.changedTouches[0].clientX - startX;
-                if (dx > 50) prevImg();
-                if (dx < -50) nextImg();
-            });
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
