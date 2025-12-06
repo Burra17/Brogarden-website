@@ -13,11 +13,9 @@
     <header>
         <nav class="navbar">
             <a href="index.html" class="logo" aria-label="Brogården startsida">Brogården</a>
-
             <button class="menu-toggle" aria-label="Öppna meny">
                 <span class="hamburger"></span>
             </button>
-
             <ul class="nav-links" role="navigation">
                 <li><a href="index.html">Hem</a></li>
                 <li><a href="boende.html">Boende</a></li>
@@ -38,6 +36,8 @@
 
         <section class="activity-list">
             <div class="container">
+                <h2 class="section-title">Utvalda Aktiviteter</h2>
+                <div class="section-divider"></div>
 
                 <article class="activity-card">
                     <div class="activity-date">
@@ -60,20 +60,23 @@
                         <p>Gemensam gudstjänst i vår samlingssal. Alla är välkomna!</p>
                     </div>
                 </article>
-
-                <article class="activity-card">
-                    <div class="activity-date">
-                        <span class="date-day">10</span>
-                        <span class="date-month">Juli 2025</span>
-                    </div>
-                    <div class="activity-content">
-                        <h2>Sommarkonsert</h2>
-                        <p>En kväll med musik och gemenskap vid vattnet. Lokala musiker spelar visor och sommarpsalmer.</p>
-                    </div>
-                </article>
-
             </div>
         </section>
+
+        <section class="calendar-section">
+            <div class="container">
+                <h2 class="section-title">Kalender</h2>
+                <p style="text-align:center; max-width:600px; margin:0 auto 2rem auto; color:var(--text-light);">
+                    Här kan du se bokningar och vad som händer framöver.
+                </p>
+                <div class="section-divider"></div>
+
+                <div class="calendar-wrapper">
+                    <iframe src="https://calendar.google.com/calendar/embed?src=c_cafb2e4b853878b7445efc043ac1c561419a4c70903456cb06bf4cfa3feb097c%40group.calendar.google.com&ctz=Europe%2FStockholm" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <footer>
