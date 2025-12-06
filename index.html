@@ -5,19 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brogården – Vandrarhem & Lägergård i Njutånger</title>
     <meta name="description" content="Brogården – prisvärt och hemtrevligt boende nära natur och vatten. Perfekt för familjer, vandrare och grupper.">
-    <meta name="theme-color" content="#1a365d">
     <link rel="stylesheet" href="style.css">
-    <link rel="preload" href="images/hero.jpg" as="image">
 </head>
 <body>
     <header>
         <nav class="navbar">
-            <a href="index.html" class="logo" aria-label="Brogården startsida">Brogården</a>
-            <button class="menu-toggle" aria-label="Öppna meny" aria-expanded="false">
-                <span class="hamburger"></span>
-            </button>
-            <ul class="nav-links" role="navigation">
-                <li><a href="index.html" class="active" aria-current="page">Hem</a></li>
+            <a href="index.html" class="logo">Brogården</a>
+
+            <button class="menu-toggle" aria-label="Öppna meny">☰</button>
+
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Hem</a></li>
                 <li><a href="boende.html">Boende</a></li>
                 <li><a href="bilder.html">Bilder</a></li>
                 <li><a href="kontakt.html">Kontakt</a></li>
@@ -26,22 +24,23 @@
         </nav>
     </header>
 
-    <main>
-        <section class="hero" aria-label="Välkomstsection">
-            <div class="hero-text">
-                <h1>Välkommen till Brogården!</h1>
-                <p>Lägergård, vandrarhem och EFS-kyrka i lugn och naturskön miljö nära havet. En plats för vila, gemenskap och glädje.</p>
-                <a href="boende.html" class="btn">Se våra rum & stugor</a>
-            </div>
-        </section>
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Välkommen till Brogården!</h1>
+            <p>Lägergård, vandrarhem och EFS-kyrka i lugn och naturskön miljö nära havet. En plats för vila, gemenskap och glädje.</p>
+            <a href="boende.html" class="btn">Se våra rum & stugor</a>
+        </div>
+    </section>
 
-        <section class="about">
-            <div class="container">
-                <h2>Om Brogården</h2>
-                <p>Brogården drivs ideellt av en lokal EFS-förening. Här erbjuds prisvärt boende i rum och stugor samt ställplatser för husbil och tält. Gården används även för läger, dop, bröllop, föreningsdagar och konserter.</p>
-            </div>
-        </section>
-    </main>
+    <section class="about">
+        <div class="container">
+            <h2 class="section-title">Om Brogården</h2>
+            <div class="section-divider"></div>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto;">
+                Brogården drivs ideellt av en lokal EFS-förening. Här erbjuds prisvärt boende i rum och stugor samt ställplatser för husbil och tält. Gården används även för läger, dop, bröllop, föreningsdagar och konserter.
+            </p>
+        </div>
+    </section>
 
     <footer>
         <p>© 2025 Brogården – Alla rättigheter förbehållna</p>
