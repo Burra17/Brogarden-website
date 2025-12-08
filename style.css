@@ -38,18 +38,21 @@ html {
 }
 
 /* ==========================================================
-   🔝 Navigation - Uppdaterad för synlighet
+   🔝 Navigation - Fastklistrad (Fixed)
 ========================================================== */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem 5%;
-    /* Vi sätter en mörkblå färg direkt så menyn alltid syns */
     background: rgba(26, 54, 93, 0.98);
     color: white;
-    position: sticky;
+    /* ÄNDRING: "fixed" gör att den alltid ligger kvar i rutan */
+    position: fixed;
     top: 0;
+    left: 0;
+    width: 100%; /* Viktigt när man använder fixed, annars krymper den */
+
     z-index: 1000;
     box-shadow: 0 4px 20px rgba(0,0,0,0.15);
     transition: var(--transition);
@@ -177,12 +180,14 @@ html {
     }
 
 /* ==========================================================
-   🖼️ Hero - Kristallklar bild (Maximal tydlighet)
+   🖼️ Hero - Bildsektionen
 ========================================================== */
 .hero {
-    /* Din bild */
+    /* Din bakgrundsbild */
     background: url("images/hero.jpg") no-repeat center center/cover;
-    min-height: 85vh;
+    /* ÄNDRING: Vi ökar till 100vh så bilden täcker hela skärmen på startsidan.
+       Detta kompenserar för att menyn täcker toppen. */
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -190,14 +195,17 @@ html {
     text-align: center;
     position: relative;
     overflow: hidden;
+    /* Vi behåller paddingen så texten inte krockar med menyn */
+    padding-top: 100px;
 }
 
+    /* VIKTIGT: Här fixar vi undersidorna så de inte blir lika gigantiska */
     .hero.small-hero {
-        min-height: 50vh;
+        /* En lagom höjd för undersidor (lite högre än förr för att väga upp menyn) */
+        min-height: 60vh;
     }
 
-    /* VIKTIGT: Vi tar bort filtret helt (display: none) 
-   så att bilden blir exakt som originalet */
+    /* ...resten av koden (hero-text, animationer etc) är samma som förut... */
     .hero::after {
         display: none;
     }
@@ -222,12 +230,10 @@ html {
     }
 }
 
-/* Eftersom bilden är ljus/klar måste vi ha skugga på texten */
 .hero h1 {
     font-size: clamp(2rem, 5vw, 3.5rem);
     margin-bottom: 1.5rem;
     font-weight: 800;
-    /* Kraftig skugga så texten "poppar" från bilden */
     text-shadow: 2px 2px 15px rgba(0,0,0,0.8);
 }
 
@@ -239,7 +245,6 @@ html {
     margin-right: auto;
     line-height: 1.6;
     font-weight: 500;
-    /* Skugga även här */
     text-shadow: 1px 1px 10px rgba(0,0,0,0.9);
 }
 
